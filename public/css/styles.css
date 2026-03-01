@@ -1,6 +1,312 @@
-/******* Change Box Model ***************/
+/* ============================================
+   CSE Motors — styles.css
+   Mobile-first responsive stylesheet
+   ============================================ */
+
+/* ---- Google Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+/* ---- Custom Properties ---- */
+:root {
+  --header-bg: #1a1a2e;
+  --nav-bg:    #16213e;
+  --accent:    #e94560;
+  --body-bg:   #f4f4f4;
+  --text:      #222;
+  --light-text:#eeeeee;
+  --card-bg:   #ffffff;
+  --border:    #ddd;
+  --max-width: 1200px;
+}
+
+/* ---- Box Model Reset ---- */
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+/* ---- Base ---- */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--body-bg);
+  color: var(--text);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+}
+
+/* ---- Skip Navigation (accessibility) ---- */
+#skip-nav {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#skip-nav:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  left: 0;
+}
+
+/* ---- Wrapper ---- */
+#wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================
+   HEADER
+   ============================ */
+#top-header {
+  background-color: var(--header-bg);
+  color: var(--light-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+}
+
+.siteName a {
+  color: var(--light-text);
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.siteName a:hover {
+  color: var(--accent);
+}
+
+#tools a {
+  color: var(--light-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border: 1px solid var(--light-text);
+  padding: 0.3rem 0.75rem;
+  border-radius: 3px;
+}
+
+#tools a:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ============================
+   NAVIGATION
+   ============================ */
+nav {
+  background-color: var(--nav-bg);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0.65rem 1rem;
+  color: var(--light-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+nav ul li a:hover {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* ============================
+   HERO SECTION
+   ============================ */
+#hero {
+  position: relative;
+  background-color: var(--header-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+#hero img:first-child {
+  width: 100%;
+  object-fit: cover;
+  max-height: 340px;
+}
+
+#hero-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  background-color: var(--header-bg);
+}
+
+#hero-cta img {
+  max-width: 260px;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.7rem 1.75rem;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cta-button:hover {
+  background-color: #c73652;
+  color: #fff;
+}
+
+/* ============================
+   UPGRADES SECTION
+   ============================ */
+#upgrades {
+  padding: 2rem 1rem;
+  background-color: var(--card-bg);
+}
+
+#upgrades h2 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.4rem;
+  color: var(--header-bg);
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.4rem;
+  display: inline-block;
+}
+
+.upgrade-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.upgrade-grid li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.upgrade-grid li a:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.upgrade-grid li a img {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+.upgrade-grid li a span {
+  padding: 0.5rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: var(--body-bg);
+  width: 100%;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+footer {
+  background-color: var(--header-bg);
+  color: var(--light-text);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.875rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ============================================
+   MEDIA QUERY — Tablet (min-width: 768px)
+   ============================================ */
+@media screen and (min-width: 768px) {
+  .upgrade-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #upgrades {
+    padding: 2.5rem 2rem;
+  }
+}
+
+/* ============================================
+   MEDIA QUERY — Desktop (min-width: 1024px)
+   ============================================ */
+@media screen and (min-width: 1024px) {
+  #hero {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 380px;
+  }
+
+  #hero img:first-child {
+    width: 60%;
+    max-height: none;
+    flex-shrink: 0;
+  }
+
+  #hero-cta {
+    width: 40%;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  #top-header {
+    padding: 1rem 2rem;
+  }
+
+  .siteName a {
+    font-size: 2rem;
+  }
+
+  #upgrades {
+    padding: 3rem 2rem;
+  }
 }

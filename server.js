@@ -16,7 +16,7 @@ const static = require("./routes/static")
  *************************/
 app.set("view engine", "ejs")
 app.use(expressLayouts)
-app.set("layout", "./layouts/main")
+app.set("layout", "./layouts/layout")
 
 /* ***********************
  * Routes
@@ -25,7 +25,7 @@ app.use(static)
 
 // index route
 app.get("/", (req, res) => {
-  res.render * ("index", { title: "Home" })
+  res.render("index", { title: "Home" })
 })
 
 /* ***********************
