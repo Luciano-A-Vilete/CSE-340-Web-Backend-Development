@@ -1,0 +1,9 @@
+<nav>
+    <ul>
+        <li>Home</li>
+        <li>Custom</li>
+        <li>Sedan</li>
+        <li>SUV</li>
+        <li>Truck</li>
+    </ul>
+</nav>
