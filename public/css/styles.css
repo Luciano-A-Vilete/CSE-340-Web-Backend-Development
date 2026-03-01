@@ -1,47 +1,38 @@
-/* ============================================
-   CSE Motors — styles.css
-   Mobile-first responsive stylesheet
-   ============================================ */
-
-/* ---- Custom Properties ---- */
+/* Mobile-first homepage styling */
 :root {
-  --cyan:      #00b4d8;
-  --nav-bg:    #1a1a2e;
-  --body-bg:   #f4f4f4;
-  --text:      #222;
-  --card-bg:   #ffffff;
-  --border:    #ddd;
-  --max-width: 1200px;
+  --accent: #01b7df;
+  --accent-dark: #009fca;
+  --nav-bg: #20203a;
+  --page-bg: #efefef;
+  --card-bg: #f8f8f8;
+  --text: #202020;
+  --max-width: 900px;
 }
 
-/* ---- Box Model Reset ---- */
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
-/* ---- Base ---- */
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url('/images/site/small_check.png');
-  background-repeat: repeat;
+  background-color: var(--page-bg);
   color: var(--text);
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
 }
 
 a {
-  color: var(--cyan);
+  color: #1329d0;
 }
 
-/* ---- Skip Navigation (accessibility) ---- */
 #skip-nav {
   position: absolute;
   left: -9999px;
@@ -58,108 +49,105 @@ a {
   left: 0;
 }
 
-/* ---- Wrapper ---- */
 #wrapper {
-  max-width: var(--max-width);
+  min-height: 100vh;
   margin: 0 auto;
-  background-color: var(--card-bg);
-  border: 4px solid var(--cyan);
+  padding: 0 0.65rem 1rem;
+  background-color: var(--page-bg);
 }
 
-/* ============================
-   HEADER
-   ============================ */
 #top-header {
-  background-color: #fff;
-  color: var(--text);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 1rem;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.9rem 0.1rem 1.15rem;
 }
 
 .siteName a {
   color: var(--text);
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: clamp(2rem, 7vw, 3.1rem);
   font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .siteName a:hover {
-  color: var(--cyan);
+  color: var(--accent-dark);
 }
 
 #tools a {
   color: var(--text);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: clamp(0.95rem, 3vw, 1.15rem);
   font-variant: small-caps;
+  white-space: nowrap;
 }
 
 #tools a:hover {
-  color: var(--cyan);
+  color: var(--accent-dark);
 }
 
-/* ============================
-   NAVIGATION
-   ============================ */
 nav {
+  margin-bottom: 1.15rem;
   background-color: var(--nav-bg);
 }
 
 nav ul {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 nav ul li a {
   display: block;
-  padding: 0.65rem 1rem;
+  padding: 0.9rem 0.35rem;
   color: #fff;
+  text-align: center;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: clamp(0.9rem, 2.8vw, 1rem);
   font-weight: 700;
-  text-transform: capitalize;
 }
 
 nav ul li a:hover {
-  background-color: var(--cyan);
+  background-color: var(--accent-dark);
   color: #fff;
 }
 
-/* ============================
-   MAIN CONTENT PADDING
-   ============================ */
 main {
-  padding: 0 1rem 1.5rem;
+  padding: 0 0 1rem;
+}
+
+main h1,
+main h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
 }
 
 main h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 1rem 0;
+  font-size: clamp(2rem, 6vw, 2.7rem);
+  margin-bottom: 0.9rem;
 }
 
-/* ============================
-   HERO SECTION
-   ============================ */
 #hero {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: #fff;
-  margin-bottom: 1.5rem;
+  position: relative;
+  min-height: 12rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.35rem;
 }
 
 #hero-cta {
-  flex: 1 0 40%;
-  padding: 0.75rem 0.5rem 0.75rem 0;
+  position: absolute;
+  top: 1rem;
+  left: 0.45rem;
+  z-index: 1;
+  width: min(44%, 12rem);
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.12rem;
 }
 
 #delorean-name {
@@ -167,165 +155,203 @@ main h1 {
 }
 
 #delorean-name a {
-  color: var(--cyan);
-  font-weight: 700;
-  font-size: 1.1rem;
+  color: var(--accent);
   text-decoration: none;
+  font-size: clamp(1.35rem, 4.6vw, 2rem);
+  font-weight: 700;
+  line-height: 1.05;
 }
 
 #delorean-features {
   list-style: none;
+  margin: 0 0 0.35rem;
   padding: 0;
-  margin: 0;
 }
 
 #delorean-features li {
-  color: var(--cyan);
-  font-size: 0.9rem;
-  line-height: 1.6;
+  color: var(--accent);
+  font-size: clamp(1.05rem, 3.5vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.15;
 }
 
 .cta-button {
   display: inline-block;
-  background-color: var(--cyan);
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5rem 1.25rem;
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-top: 0.25rem;
   width: fit-content;
+  min-width: 7.5rem;
+  padding: 0.55rem 1rem;
+  background-color: var(--accent);
+  color: #111;
+  text-align: center;
+  text-decoration: none;
+  font-size: clamp(0.95rem, 3vw, 1.15rem);
+  font-weight: 700;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
 }
 
 .cta-button:hover {
-  background-color: #0095b3;
-  color: #fff;
+  background-color: var(--accent-dark);
+  color: #111;
 }
 
 #hero > img {
-  flex: 1 0 55%;
-  object-fit: cover;
-  max-height: 200px;
+  width: min(84%, 32rem);
+  margin: 1.5rem 0 0 auto;
 }
 
-/* ============================
-   LOWER CONTENT (Reviews + Upgrades)
-   Mobile: Reviews first, then Upgrades (stacked)
-   Desktop: Upgrades left | Reviews right
-   ============================ */
 #lower-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
-/* HTML order: Reviews first (shows first on mobile) */
-/* On desktop, use order to put Upgrades on left */
-
-/* ============================
-   REVIEWS SECTION
-   ============================ */
-#reviews h2 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin: 0 0 0.75rem;
+#reviews h2,
+#upgrades h2 {
+  font-size: clamp(1.7rem, 5vw, 2.3rem);
+  margin-bottom: 0.85rem;
 }
 
 #reviews ul {
-  padding-left: 1.5rem;
   margin: 0;
+  padding-left: 1.25rem;
 }
 
 #reviews ul li {
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-}
-
-/* ============================
-   UPGRADES SECTION
-   ============================ */
-#upgrades h2 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin: 0 0 0.75rem;
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.2rem, 3.6vw, 1.5rem);
+  line-height: 1.35;
 }
 
 .upgrade-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 0.7rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
 }
 
 .upgrade-grid li a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  gap: 0.45rem;
+  padding: 0;
+  background-color: transparent;
   text-decoration: none;
-  background-color: var(--cyan);
-  padding: 0.5rem;
 }
 
 .upgrade-grid li a img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 5 / 3;
   object-fit: contain;
-  background-color: var(--cyan);
+  background-color: var(--accent);
+  border: 1px solid #5f5f5f;
+  padding: 0.9rem;
 }
 
 .upgrade-grid li a span {
   display: block;
-  margin-top: 0.35rem;
-  color: #0000EE;
-  text-decoration: underline;
-  font-size: 0.85rem;
+  margin: 0;
+  color: #1329d0;
   text-align: center;
+  text-decoration: underline;
+  font-size: clamp(1rem, 3vw, 1.15rem);
 }
 
 .upgrade-grid li a:hover span {
-  color: #551A8B;
+  color: #551a8b;
 }
 
-/* ============================
-   FOOTER
-   ============================ */
 footer {
-  background-color: #fff;
-  color: var(--text);
-  padding: 0.75rem 1rem;
-  font-size: 0.8rem;
-  border-top: 1px solid var(--border);
+  padding: 1rem 0 0.5rem;
+  font-size: 1rem;
 }
 
 footer p {
   margin: 0;
 }
 
-/* ============================================
-   MEDIA QUERY — Tablet / Desktop (min-width: 768px)
-   ============================================ */
 @media screen and (min-width: 768px) {
-  main h1 {
-    font-size: 1.75rem;
+  body {
+    background-image: url("/images/site/small_check.png");
+    background-repeat: repeat;
   }
 
-  #hero > img {
-    max-height: 280px;
+  #wrapper {
+    max-width: var(--max-width);
+    min-height: auto;
+    margin: 0.9rem auto;
+    padding: 0 0.8rem 1rem;
+    background-color: var(--card-bg);
+    border: 4px solid var(--accent);
+    border-radius: 0.35rem;
   }
 
-  #delorean-name a {
-    font-size: 1.3rem;
+  #top-header {
+    align-items: center;
+    padding: 0.8rem 0.35rem 1rem;
   }
 
-  #delorean-features li {
+  .siteName a {
+    font-size: 2.9rem;
+  }
+
+  #tools a {
     font-size: 1rem;
   }
 
-  /* Two-column layout: Upgrades left, Reviews right */
+  nav {
+    margin-bottom: 1.25rem;
+  }
+
+  nav ul li a {
+    padding: 0.6rem 0.2rem;
+    font-size: 0.9rem;
+  }
+
+  main {
+    padding: 0 0.35rem 1rem;
+  }
+
+  main h1 {
+    font-size: 2.55rem;
+    margin-bottom: 1rem;
+  }
+
+  #hero {
+    min-height: 17rem;
+    margin-bottom: 2.2rem;
+  }
+
+  #hero-cta {
+    top: 1.8rem;
+    left: 1.2rem;
+    width: min(34%, 14rem);
+    gap: 0.18rem;
+  }
+
+  #delorean-name a {
+    font-size: 1.8rem;
+  }
+
+  #delorean-features li {
+    font-size: 1.25rem;
+  }
+
+  .cta-button {
+    min-width: 8.6rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 1.15rem;
+  }
+
+  #hero > img {
+    width: min(65%, 28rem);
+    margin-top: 0.7rem;
+    margin-right: 2.2rem;
+  }
+
   #lower-content {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 2rem;
   }
 
   #upgrades {
@@ -335,22 +361,46 @@ footer p {
   #reviews {
     order: 2;
   }
+
+  #reviews h2,
+  #upgrades h2 {
+    font-size: 1.95rem;
+  }
+
+  #reviews ul li {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .upgrade-grid li a span {
+    font-size: 0.95rem;
+  }
+
+  footer {
+    padding: 0.9rem 0.35rem 0.3rem;
+    font-size: 0.9rem;
+  }
 }
 
-/* ============================================
-   MEDIA QUERY — Desktop (min-width: 1024px)
-   ============================================ */
 @media screen and (min-width: 1024px) {
+  #wrapper {
+    margin-top: 0.6rem;
+  }
+
   main {
-    padding: 0 2rem 2rem;
+    padding: 0 0.5rem 1rem;
+  }
+
+  #hero {
+    min-height: 18rem;
   }
 
   #hero-cta {
-    padding: 1rem 1rem 1rem 0;
-    gap: 0.6rem;
+    left: 1.5rem;
   }
 
   #hero > img {
-    max-height: 340px;
+    width: min(63%, 30rem);
+    margin-right: 2.8rem;
   }
 }
