@@ -1,0 +1,14 @@
+<div class="error-display">
+    <% if (title===404) { %>
+        <h2><%- title %> - Not Found</h2>
+        <% } else { %>
+            <h2><%- title %></h2>
+            <% } %>
+                <p><%- message %></p>
+                <!-- <img src="/images/site/error.png" alt="error"> -->
+                <% if (title===404) { %>
+                    <img src="/images/site/error.png" alt="404 Error Image" />
+                    <% } else { %>
+                        <img src="/images/site/500.png" alt="500 Error Image" />
+                        <% } %>
+</div>
