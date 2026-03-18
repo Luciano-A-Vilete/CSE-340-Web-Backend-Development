@@ -282,13 +282,18 @@ ul#inv-display>li div.namePrice {
   text-shadow: 0 0 25px var(--secondary-bg), 0 0 3px black;
 }
 
-.error-display img {
-  max-width: 100%;
-  padding: 2px;
-}
-
 .error-display {
   text-align: center;
+  padding: 2rem;
+}
+
+.error-code {
+  font-family: var(--decorative-font);
+  font-size: 6rem;
+  font-weight: bold;
+  color: var(--pop);
+  line-height: 1;
+  margin-bottom: 1rem;
 }
 
 /* Vehicle Detail */

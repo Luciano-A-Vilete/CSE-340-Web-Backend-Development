@@ -32,7 +32,7 @@ invCont.buildByInventoryId = utilities.handleErrors(async function (req, res, ne
   let nav = await utilities.getNav();
   const title = `${data[0].inv_make} ${data[0].inv_model}`;
 
-  res.render("./inventory/detail", {
+  res.render("./inventory/details", {
     title,
     nav,
     details,
