@@ -1,0 +1,36 @@
+<h1><%= title %></h1>
+
+<%- messages() %>
+
+<% if (errors) { %>
+  <ul class="notice">
+    <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<div id="inv-form-wrapper">
+  <form action="/inv/add-classification" method="post" id="addClassificationForm">
+    <fieldset>
+      <legend>New Classification</legend>
+
+      <label for="classification_name">Classification Name <span class="required">*</span></label>
+      <span class="field-hint">Letters only — no spaces or special characters.</span>
+      <input
+        type="text"
+        name="classification_name"
+        id="classification_name"
+        placeholder="e.g. Sedan"
+        value="<%= locals.classification_name || '' %>"
+        pattern="^[A-Za-z]+$"
+        title="Letters only — no spaces or special characters"
+        required
+      />
+
+      <button type="submit" class="inv-btn">Add Classification</button>
+    </fieldset>
+  </form>
+
+  <p class="back-link"><a href="/inv/">&laquo; Back to Management</a></p>
+</div>
