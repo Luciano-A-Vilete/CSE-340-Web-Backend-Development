@@ -1,0 +1,40 @@
+<h1><%= title %></h1>
+
+<%- messages() %>
+
+<div id="login-wrapper">
+  <form action="/account/login" method="post" id="login-form">
+    <fieldset>
+      <legend>Sign In</legend>
+
+      <label for="account_email">Email Address</label>
+      <input
+        type="email"
+        name="account_email"
+        id="account_email"
+        placeholder="Enter email address"
+        required
+      />
+
+      <label for="account_password">Password</label>
+      <div class="password-rules">
+        Passwords must be at least 12 characters and contain at least 1 number, 1 capital letter, 1 lowercase letter, and 1 special character. No spaces allowed.
+      </div>
+      <input
+        type="password"
+        name="account_password"
+        id="account_password"
+        placeholder="Enter password"
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+        title="Must be at least 12 characters and contain at least 1 number, 1 capital letter, 1 lowercase letter, and 1 special character. No spaces."
+        required
+      />
+
+      <button type="submit" class="login-btn">Login</button>
+    </fieldset>
+  </form>
+
+  <p class="register-link">
+    Don't have an account? <a href="/account/register">Click here to register</a>
+  </p>
+</div>
