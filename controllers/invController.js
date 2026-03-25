@@ -117,6 +117,42 @@ invCont.updateInventory = async function (req, res, next) {
 }
 
 /* ***************************
+ *  Build delete confirmation view
+ * ************************** */
+invCont.buildDeleteConfirm = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id)
+  let nav = await utilities.getNav()
+  const itemData = await invModel.getInventoryByInventoryId(inv_id)
+  const item = itemData[0]
+  const name = `${item.inv_make} ${item.inv_model}`
+  res.render("inventory/delete-confirm", {
+    title: "Delete " + name,
+    nav,
+    errors: null,
+    inv_id: item.inv_id,
+    inv_make: item.inv_make,
+    inv_model: item.inv_model,
+    inv_year: item.inv_year,
+    inv_price: item.inv_price,
+  })
+}
+
+/* ***************************
+ *  Process inventory deletion
+ * ************************** */
+invCont.deleteInventory = async function (req, res, next) {
+  const inv_id = parseInt(req.body.inv_id)
+  const result = await invModel.deleteInventoryItem(inv_id)
+  if (result.rowCount) {
+    req.flash("notice", "The vehicle was successfully deleted.")
+    res.redirect("/inv/")
+  } else {
+    req.flash("notice", "Sorry, the deletion failed.")
+    res.redirect(`/inv/delete/${inv_id}`)
+  }
+}
+
+/* ***************************
  *  Return inventory items as JSON for a given classification
  * ************************** */
 invCont.getInventoryJSON = async (req, res, next) => {

@@ -10,4 +10,11 @@
   </ul>
 <% } %>
 
-<p>You're logged in</p>
+<h2>Welcome <%= locals.accountData.account_firstname %></h2>
+
+<p><a href="/account/update/<%= locals.accountData.account_id %>">Update Account Information</a></p>
+
+<% if (locals.accountData.account_type === "Employee" || locals.accountData.account_type === "Admin") { %>
+  <h3>Inventory Management</h3>
+  <p><a href="/inv/">Manage Inventory</a></p>
+<% } %>

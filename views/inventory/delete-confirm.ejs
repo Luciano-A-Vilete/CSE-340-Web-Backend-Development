@@ -1,0 +1,31 @@
+<h1><%= title %></h1>
+
+<%- messages() %>
+
+<p class="notice">Confirm Deletion - The delete is permanent</p>
+
+<div id="inv-form-wrapper">
+  <form action="/inv/delete" method="post" id="deleteInventoryForm">
+    <fieldset>
+      <legend>Vehicle Details</legend>
+
+      <input type="hidden" name="inv_id" value="<%= locals.inv_id %>" />
+
+      <label for="inv_make">Make</label>
+      <input type="text" id="inv_make" value="<%= locals.inv_make %>" readonly />
+
+      <label for="inv_model">Model</label>
+      <input type="text" id="inv_model" value="<%= locals.inv_model %>" readonly />
+
+      <label for="inv_year">Year</label>
+      <input type="number" id="inv_year" value="<%= locals.inv_year %>" readonly />
+
+      <label for="inv_price">Price</label>
+      <input type="number" id="inv_price" value="<%= locals.inv_price %>" readonly />
+
+      <button type="submit" class="inv-btn">Delete Vehicle</button>
+    </fieldset>
+  </form>
+
+  <p class="back-link"><a href="/inv/">&laquo; Back to Management</a></p>
+</div>

@@ -22,6 +22,30 @@ router.post(
   utilities.handleErrors(accountController.accountLogin)
 )
 
+// Logout
+router.get("/logout", utilities.handleErrors(accountController.logout))
+
+// Account update view
+router.get("/update/:account_id", utilities.checkLogin, utilities.handleErrors(accountController.buildUpdateAccount))
+
+// Process account information update
+router.post(
+  "/update",
+  utilities.checkLogin,
+  regValidate.accountUpdateRules(),
+  regValidate.checkAccountUpdateData,
+  utilities.handleErrors(accountController.updateAccount)
+)
+
+// Process password update
+router.post(
+  "/update-password",
+  utilities.checkLogin,
+  regValidate.passwordUpdateRules(),
+  regValidate.checkPasswordUpdateData,
+  utilities.handleErrors(accountController.updatePassword)
+)
+
 // Process the registration data
 router.post(
   "/register",
