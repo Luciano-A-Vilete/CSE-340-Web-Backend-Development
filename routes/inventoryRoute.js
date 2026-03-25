@@ -26,6 +26,20 @@ router.post(
   utilities.handleErrors(invController.addInventory)
 );
 
+// AJAX JSON endpoint
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
+// Edit inventory route
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEditInventory));
+
+// Process inventory update
+router.post(
+  "/update",
+  invValidate.inventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+);
+
 // Existing routes
 router.get("/type/:classificationId", invController.buildByClassificationId);
 router.get("/detail/:inventoryId", invController.buildByInventoryId);

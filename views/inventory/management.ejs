@@ -16,4 +16,18 @@
     <a href="/inv/add-classification" class="mgmt-link">Add New Classification</a>
     <a href="/inv/add-inventory" class="mgmt-link">Add New Vehicle</a>
   </nav>
+
+  <h2>Manage Inventory</h2>
+  <p>Select a classification to see the vehicles below, then use the links to modify or delete.</p>
+
+  <%- classificationList %>
+
+  <table id="inventoryDisplay">
+  </table>
+
+  <noscript>
+    <p>JavaScript is required to use the inventory management table.</p>
+  </noscript>
 </div>
+
+<script src="/js/inventory.js"></script>
