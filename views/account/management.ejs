@@ -13,6 +13,7 @@
 <h2>Welcome <%= locals.accountData.account_firstname %></h2>
 
 <p><a href="/account/update/<%= locals.accountData.account_id %>">Update Account Information</a></p>
+<p><a href="/fav/">My Saved Vehicles</a></p>
 
 <% if (locals.accountData.account_type === "Employee" || locals.accountData.account_type === "Admin") { %>
   <h3>Inventory Management</h3>

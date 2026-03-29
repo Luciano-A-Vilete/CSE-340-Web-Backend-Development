@@ -1,0 +1,31 @@
+<h1><%= title %></h1>
+
+<%- messages() %>
+
+<% if (!favorites || favorites.length === 0) { %>
+  <p class="notice">You have no saved vehicles yet. Browse our <a href="/">inventory</a> and click "Add to Favorites" on any vehicle!</p>
+<% } else { %>
+  <ul id="inv-display">
+    <% favorites.forEach(vehicle => { %>
+      <li>
+        <a href="/inv/detail/<%= vehicle.inv_id %>" title="View <%= vehicle.inv_make %> <%= vehicle.inv_model %> details">
+          <img src="<%= vehicle.inv_thumbnail %>" alt="Image of <%= vehicle.inv_make %> <%= vehicle.inv_model %> on CSE Motors" />
+        </a>
+        <div class="namePrice">
+          <hr />
+          <h2>
+            <a href="/inv/detail/<%= vehicle.inv_id %>">
+              <%= vehicle.inv_year %> <%= vehicle.inv_make %> <%= vehicle.inv_model %>
+            </a>
+          </h2>
+          <span>$<%= new Intl.NumberFormat('en-US').format(vehicle.inv_price) %></span>
+          <form action="/fav/remove" method="post">
+            <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
+            <input type="hidden" name="redirect_to" value="/fav/">
+            <button type="submit" class="remove-fav-btn">Remove</button>
+          </form>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>

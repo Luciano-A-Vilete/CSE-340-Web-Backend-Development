@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model");
+const favoriteModel = require("../models/favorite-model");
 const utilities = require("../utilities/");
 
 const invCont = {};
@@ -32,10 +33,17 @@ invCont.buildByInventoryId = utilities.handleErrors(async function (req, res, ne
   let nav = await utilities.getNav();
   const title = `${data[0].inv_make} ${data[0].inv_model}`;
 
+  let isFavorited = false
+  if (res.locals.loggedin) {
+    isFavorited = await favoriteModel.checkFavorite(res.locals.accountData.account_id, data[0].inv_id)
+  }
+
   res.render("./inventory/details", {
     title,
     nav,
     details,
+    inv_id: data[0].inv_id,
+    isFavorited,
   });
 });
 

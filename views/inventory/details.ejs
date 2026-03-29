@@ -4,6 +4,24 @@
     </h1>
     <% } else { res.redirect('/') } %>
 
-        <%# messages() %>
+        <%- messages() %>
 
             <%- details %>
+
+<% if (locals.loggedin) { %>
+  <div class="favorite-action">
+    <% if (locals.isFavorited) { %>
+      <form action="/fav/remove" method="post">
+        <input type="hidden" name="inv_id" value="<%= locals.inv_id %>">
+        <button type="submit" class="remove-fav-btn">&#9829; Remove from Favorites</button>
+      </form>
+    <% } else { %>
+      <form action="/fav/add" method="post">
+        <input type="hidden" name="inv_id" value="<%= locals.inv_id %>">
+        <button type="submit" class="add-fav-btn">&#9825; Add to Favorites</button>
+      </form>
+    <% } %>
+  </div>
+<% } else { %>
+  <p class="notice"><a href="/account/login">Log in</a> to save this vehicle to your favorites.</p>
+<% } %>

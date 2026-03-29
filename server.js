@@ -13,6 +13,7 @@ const app = express();
 const static = require("./routes/static");
 const inventoryRoute = require("./routes/inventoryRoute");
 const accountRoute = require("./routes/accountRoute");
+const favoriteRoute = require("./routes/favoriteRoute");
 const baseController = require("./controllers/baseController");
 const utilities = require("./utilities/");
 const session = require("express-session");
@@ -67,6 +68,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 app.use("/inv", inventoryRoute);
 // Account routes
 app.use("/account", accountRoute);
+// Favorites routes
+app.use("/fav", favoriteRoute);
 
 // Intentional 500 Error Route
 app.get("/error", (req, res, next) => {
