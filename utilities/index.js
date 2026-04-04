@@ -177,7 +177,7 @@ Util.checkLogin = (req, res, next) => {
 Util.checkAccountType = (req, res, next) => {
   if (res.locals.loggedin) {
     const accountType = res.locals.accountData.account_type
-    if (accountType === "Employee" || accountType === "Admin") {
+    if (accountType === "employee" || accountType === "admin") {
       next()
       return
     }
